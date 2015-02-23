@@ -2,7 +2,7 @@ MessageBoy
 ==========
 
 Unified API (Facade) to send a Message (Email, HttpPost, DB, etc).
-
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34/mini.png)](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34) [![Build Status](https://travis-ci.org/ecoreng/messageboy.svg)](https://travis-ci.org/ecoreng/messageboy)
 This package provides a unified API to send a message/notification, etc. by abstracting the concept of a message to contain a body, subject, remitents and potential destinataries.
 
 The package requires you to instantiate the ``MessageDispatcher``, register Adapters to handle your message by Group, Type or Globally.
