@@ -46,8 +46,12 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testDispatchMessage()
     {
-        $mockAdapterType  = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->setMockClassName('TypeAdapter')->getMock();
-        $mockAdapterGroup = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->setMockClassName('GroupAdapter')->getMock();
+        $mockAdapterType  = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')
+            ->setMockClassName('TypeAdapter')
+            ->getMock();
+        $mockAdapterGroup = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')
+            ->setMockClassName('GroupAdapter')
+            ->getMock();
 
         $mockMessage = $this->getMockBuilder('ecoreng\MessageBoy\Message')->getMock();
 

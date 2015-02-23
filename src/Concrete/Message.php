@@ -38,14 +38,14 @@ class Message implements IMessage
 
     /**
      * Parameter Array
-     * 
+     *
      * @var array
      */
     protected $params = [];
 
     /**
      * Returns the streamable body of the message
-     * 
+     *
      * @return Stream
      */
     public function getBody()
@@ -85,7 +85,7 @@ class Message implements IMessage
 
     /**
      * Get parameters
-     * 
+     *
      * @return array
      */
     public function getParams()
@@ -143,7 +143,7 @@ class Message implements IMessage
 
     /**
      * Set the parameter array
-     * 
+     *
      * @param array $params
      */
     public function setParams(array $params)
