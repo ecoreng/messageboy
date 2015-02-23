@@ -54,12 +54,12 @@ This previous example demonstrates the abstraction of the API, but it doesn't sh
 
 // (Register example adapters)
 $md
-	->registerAdapter(new MailAdapter,					'regular')
-	->registerAdapter(new SMSAdapter,						'priority')
-	->registerAdapter(new VoicePhoneAdapter,		'priority')
-	->registerAdapter(new DataBaseAdapter,			'backup')
-	->registerAdapter(new TwitterAdapter,				'social')
-	->registerAdapter(new FacebookPostAdapter,	'social');
+	->registerAdapter(new MailAdapter, 'regular')
+	->registerAdapter(new SMSAdapter, 'priority')
+	->registerAdapter(new VoicePhoneAdapter, 'priority')
+	->registerAdapter(new DataBaseAdapter, 'backup')
+	->registerAdapter(new TwitterAdapter, 'social')
+	->registerAdapter(new FacebookPostAdapter, 'social');
 
 // ==== End Boilerplate code ====
 
@@ -78,4 +78,6 @@ $message = (new Message);
 $md->dispatch($message, 'priority');
 ```
 
+Notice that we are using now the class ``Message`` instead of ``SimpleMessage``, which allows us to pass a ``Stream`` object as the body of th message, and an ``Iterator`` for the destinataries of that message, so it's really flexible if it's needed.
 
+The adapters registered in this last example are virtual as I am not providing them, but it's not rocket science, just create a class the implements ``ecoreng\MessageBoy\Adapter``, register it in the dispatcher and you will receive an implementation of ``ecoreng\MessageBoy\Message`` ready to be used.
