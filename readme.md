@@ -44,7 +44,7 @@ $md->dispatch($message, 'mail');
 
 ```
 
-This previous example demonstrates the abstraction of the API, but it doesn't show a clear advantage vs sending the mail manually, but notice that we can use adapters to do handle or interpret the message however we want, for example sending the message to a Database, through HTTP Post to another API, to a socket connection, a File, another API using any SDK, etc.
+This previous example demonstrates the abstraction of the API, but it doesn't show a clear advantage vs sending the mail manually, but notice that we can use adapters to do handle or interpret the message however we want, for instance sending the message to a Database, through HTTP Post to another API, to a socket connection, a File, another API using any SDK, etc.
 
 ```php
 
@@ -54,12 +54,12 @@ This previous example demonstrates the abstraction of the API, but it doesn't sh
 
 // (Register example adapters)
 $md
-	->registerAdapter(new MailAdapter, 					'regular')
-	->registerAdapter(new SMSAdapter, 					'priority')
+	->registerAdapter(new MailAdapter,					'regular')
+	->registerAdapter(new SMSAdapter,						'priority')
 	->registerAdapter(new VoicePhoneAdapter,		'priority')
-	->registerAdapter(new DataBaseAdapter, 			'backup')
-	->registerAdapter(new TwitterAdapter, 			'social')
-	->registerAdapter(new FacebookPostAdapter, 	'social');
+	->registerAdapter(new DataBaseAdapter,			'backup')
+	->registerAdapter(new TwitterAdapter,				'social')
+	->registerAdapter(new FacebookPostAdapter,	'social');
 
 // ==== End Boilerplate code ====
 
