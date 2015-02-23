@@ -1,0 +1,19 @@
+{
+    "name": "ecoreng/messageboy",
+    "description": "Unified API (Facade) to send a Message (Email, HttpPost, DB, etc).",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ecoreng",
+            "email": "me@ecor.me"
+        }
+    ],
+    "require": {
+        "psr/http-message": "^0.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "ecoreng\\MessageBoy\\" : "src/"
+        }
+    }
+}
