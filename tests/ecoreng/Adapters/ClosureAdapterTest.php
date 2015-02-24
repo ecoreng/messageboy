@@ -8,7 +8,7 @@ class NativeMailAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $cls = function($message) {
+        $cls = function ($message) {
             return 'successful';
         };
         $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\ClosureAdapter($cls);

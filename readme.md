@@ -1,11 +1,14 @@
 MessageBoy
 ==========
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34/mini.png)](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34) [![Build Status](https://travis-ci.org/ecoreng/messageboy.svg)](https://travis-ci.org/ecoreng/messageboy)
 
 Unified API (Facade) to send a Message (Email, HttpPost, DB, etc).
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34/mini.png)](https://insight.sensiolabs.com/projects/3e8fad1e-d0ef-41b4-98b9-8ee977390b34) [![Build Status](https://travis-ci.org/ecoreng/messageboy.svg)](https://travis-ci.org/ecoreng/messageboy)
+
+
 This package provides a unified API to send a message/notification, etc. by abstracting the concept of a message to contain a body, subject, remitents and potential destinataries.
 
-The package requires you to instantiate the ``MessageDispatcher``, register Adapters to handle your message by Group, Type or Globally.
+
+The library requires you to instantiate the ``MessageDispatcher``, register Adapters to handle your message by Group, Type or Globally.
 
 The usage is as follows:
 
@@ -30,10 +33,10 @@ $md
 // ==== End Boilerplate code ====
 
 
-$message = (new SimpleMessage);
-	->setBodyString('Long Message Body aaaa eeee iiii ooo uuu');
-	->setSubject('Short Subject');
-	->setToArray(['test@example.com']);
+$message = (new SimpleMessage)
+	->setBodyString('Long Message Body aaaa eeee iiii ooo uuu')
+	->setSubject('Short Subject')
+	->setToArray(['test@example.com'])
 	->setFrom('me@me.com');
 
 // Dispatch the message globally to all adapters
@@ -81,3 +84,9 @@ $md->dispatch($message, 'priority');
 Notice that we are using now the class ``Message`` instead of ``SimpleMessage``, which allows us to pass a ``Stream`` object as the body of th message, and an ``Iterator`` for the destinataries of that message, so it's really flexible if it's needed.
 
 The adapters registered in this last example are virtual as I am not providing them, but it's not rocket science, just create a class the implements ``ecoreng\MessageBoy\Adapter``, register it in the dispatcher and you will receive an implementation of ``ecoreng\MessageBoy\Message`` ready to be used.
+
+Alternative:
+
+```
+https://github.com/namshi/notificator
+```
