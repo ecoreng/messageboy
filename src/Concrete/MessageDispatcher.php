@@ -8,15 +8,47 @@ use \ecoreng\MessageBoy\Adapter;
 
 class MessageDispatcher implements IMessageDispatcher
 {
-    protected $adapters = [];
+
+    /**
+     * All the registered adapters
+     * 
+     * @var \ArrayIterator
+     */
+    protected $adapters;
+
+    /**
+     * Reference to which adapter handles which type of request;
+     * Contains an array with keys that reference the $adapters iterator entry
+     * 
+     * @var array
+     */
     protected $types = [];
+
+    /**
+     * Reference to which adapter handles which group request;
+     * Contains an array with keys that reference the $adapters iterator entry
+     * 
+     * @var array
+     */
     protected $groups = [];
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->adapters = new \ArrayIterator;
     }
 
+    /**
+     * Dispatch the message to the specified handlers registered for $type or 
+     * $group, if both variables are null, then it will dispatch the message
+     * globally
+     * 
+     * @param Message $message
+     * @param string $type
+     * @param string $group
+     */
     public function dispatch(IMessage $message, $type = null, $group = null)
     {
         if (!$type && !$group) {
@@ -33,6 +65,15 @@ class MessageDispatcher implements IMessageDispatcher
         }
     }
 
+    /**
+     * Register $adapter to handle the messages of type $type or group $group,
+     * if these variables are null, the adapter will handle only global messages
+     *  
+     * @param Adapter $adapter
+     * @param string $type
+     * @param string $group
+     * @return \ecoreng\MessageBoy\Concrete\MessageDispatcher
+     */
     public function registerAdapter(Adapter $adapter, $type = null, $group = null)
     {
         $this->adapters->append($adapter);
@@ -41,18 +82,38 @@ class MessageDispatcher implements IMessageDispatcher
             $this->addToType($type, $key);
             $this->addToGroup($group, $key);
         }
+        return $this;
     }
 
+    /**
+     * Returns an \ArrayIterator containing all adapters
+     * 
+     * @return \ArrayIterator
+     */
     public function getAdapters()
     {
         return $this->adapters;
     }
 
+    /**
+     * Returns an \ArrayIterator containing all adapters registered to handle
+     * a $type request
+     * 
+     * @param string $type
+     * @return \ArrayIterator
+     */
     public function getAdaptersByType($type)
     {
         return $this->getAdaptersFromCollection('types', $type);
     }
 
+    /**
+     * Returns an \ArrayIterator containing all adapters registered to handle
+     * a $group request
+     *  
+     * @param string $group
+     * @return \ArrayIterator
+     */
     public function getAdaptersByGroup($group)
     {
         return $this->getAdaptersFromCollection('groups', $group);
@@ -99,4 +160,5 @@ class MessageDispatcher implements IMessageDispatcher
             }
         }
     }
+
 }

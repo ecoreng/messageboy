@@ -5,12 +5,15 @@ MessageBoy
 Unified API (Facade) to send a Message (Email, HttpPost, DB, etc).
 
 
-This package provides a unified API to send a message/notification, etc. by abstracting the concept of a message to contain a body, subject, remitents and potential destinataries.
+This package provides a unified API to send a message/notification, etc. by abstracting the concept of a message to contain a body, subject, remittent and potential destinataries.
 
 
-The library requires you to instantiate the ``MessageDispatcher``, register Adapters to handle your message by Group, Type or Globally.
+The library operates the following way:
 
-The usage is as follows:
+1 - A ``MessageDispatcher`` is instantiated
+2 - Some ``Adapter``s are registered to handle the ``Message`` by Group, Type or Globally
+3 - A ``Message`` is created and mutated
+4 - The ``Message`` is dispatched through the ``MessageDispatcher``
 
 ```php
 
@@ -47,7 +50,7 @@ $md->dispatch($message, 'mail');
 
 ```
 
-This previous example demonstrates the abstraction of the API, but it doesn't show a clear advantage vs sending the mail manually, but notice that we can use adapters to do handle or interpret the message however we want, for instance sending the message to a Database, through HTTP Post to another API, to a socket connection, a File, another API using any SDK, etc.
+This previous example demonstrates the abstraction of the API, but it doesn't show a clear advantage over sending the mail manually. The important thing to notice is that we can use adapters to do handle or interpret the message however we want, for instance sending the message to a Database, through HTTP Post to another API, to a socket connection, a File, another API using any SDK, etc.
 
 ```php
 

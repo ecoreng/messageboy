@@ -9,6 +9,7 @@ function file_put_contents($file, $data, $flags)
 
 class FileAdapterTest extends \PHPUnit_Framework_TestCase
 {
+
     protected $ad;
 
     public function setUp()
@@ -27,8 +28,8 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
         $status = $this->ad->handle($this->ms);
 
         $this->assertEquals(true, is_array($status));
-        $pattern = '#\/[0-9a-zA-Z]{10}.txt\:[0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}\:[0-9]{2}\:[0-9]{2}\-'
-            . '[0-9]{2}\:[0-9]{2} \- bar \: moo \: foo\:0#';
+        $pattern = '#' . '\\' . DIRECTORY_SEPARATOR . '[0-9a-zA-Z]{10}.txt\:[0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}'
+                . '\:[0-9]{2}\:[0-9]{2}\-[0-9]{2}\:[0-9]{2} \- bar \: moo \-\> test@example\.com \: foo\:0#';
         foreach ($status as $s) {
             $this->assertEquals(1, preg_match($pattern, $s));
         }
@@ -43,10 +44,11 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
         $status = $this->add->handle($this->ms);
 
         $this->assertEquals(true, is_array($status));
-        $pattern = '#test\/test\-at\-example\.com\.tst\:[0-9]{4}\-[0-9]{2}\-[0-9]{2}T[0-9]{2}\:[0-9]{2}\:'
-            . '[0-9]{2}\-[0-9]{2}\:[0-9]{2} \- bar \: moo \: foo\:8#';
+        $pattern = '#test' . '\\' . DIRECTORY_SEPARATOR . 'test\-at\-example\.com\.tst\:[0-9]{4}\-[0-9]{2}\-'
+                . '[0-9]{2}T[0-9]{2}\:[0-9]{2}\:[0-9]{2}\-[0-9]{2}\:[0-9]{2} \- bar \: moo \: foo\:8#';
         foreach ($status as $s) {
             $this->assertEquals(1, preg_match($pattern, $s));
         }
     }
+
 }
