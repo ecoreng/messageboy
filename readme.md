@@ -10,10 +10,10 @@ This package provides a unified API to send a message/notification, etc. by abst
 
 The library operates the following way:
 
-1 - A ``MessageDispatcher`` is instantiated
-2 - Some ``Adapter``s are registered to handle the ``Message`` by Group, Type or Globally
-3 - A ``Message`` is created and mutated
-4 - The ``Message`` is dispatched through the ``MessageDispatcher``
+- A ``MessageDispatcher`` is instantiated
+- Some ``Adapter``s are registered to handle the ``Message`` by Group, Type or Globally
+- A ``Message`` is created and mutated
+- The ``Message`` is dispatched through the ``MessageDispatcher``
 
 ```php
 
