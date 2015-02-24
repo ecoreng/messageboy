@@ -50,5 +50,4 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals(1, preg_match($pattern, $s));
         }
     }
-
 }

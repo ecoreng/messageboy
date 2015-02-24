@@ -5,8 +5,8 @@ namespace ecoreng\MessageBoy\Concrete\Adapters;
 use \ecoreng\MessageBoy\Message;
 
 /**
- * Adapter that accepts a 'Closure'/anonymous function as argument in the 
- * consturctor and executes that 'Closure' upon calling the 'handle' method 
+ * Adapter that accepts a 'Closure'/anonymous function as argument in the
+ * consturctor and executes that 'Closure' upon calling the 'handle' method
  * passing the 'Message' to it.
  */
 class ClosureAdapter implements \ecoreng\MessageBoy\Adapter
@@ -15,7 +15,7 @@ class ClosureAdapter implements \ecoreng\MessageBoy\Adapter
 
     /**
      * Constructor
-     * 
+     *
      * @param \Closure $handler
      */
     public function __construct(\Closure $handler)

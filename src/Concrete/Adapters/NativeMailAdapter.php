@@ -6,14 +6,14 @@ use \ecoreng\MessageBoy\Message;
 
 /**
  * Sends an email using the native mail function
- * 
+ *
  * You can add mail headers by passing an associative array with the
  * 'mail.headers' parameter in the message as 'Header' => 'value'
  * so it's sent as "Header: value"
- * 
- * The headers can also be sent through the constructor as well as the line 
+ *
+ * The headers can also be sent through the constructor as well as the line
  * separator to be used.
- * 
+ *
  * Supports multiple destinataries as the mail function handles it properly in
  * one call.
  */
@@ -24,7 +24,7 @@ class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
 
     /**
      * Constructor
-     * 
+     *
      * @param array $headers - Headers to be used with the mail function
      * @param string $lineSeparator - Line separator for the message
      */

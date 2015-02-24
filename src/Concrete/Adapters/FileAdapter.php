@@ -6,19 +6,19 @@ use \ecoreng\MessageBoy\Message;
 
 /**
  * Adapter that sends the messages to a file
- * 
+ *
  * You can pass a base folder (through the constructor) where all your messages will be stored.
- * 
+ *
  * Pass the extension of the file if you need something different than 'txt'
- * 
+ *
  * Pass a boolean to define whether you want to use the destinatary as the file name or dont
- * 
+ *
  * Pass file_put_contents flags as the last parameter to handle the logs differently (use \FILE_APPEND in conjunction
  * with the $destinataryAsName to append all messages to a same destinatary in one filename)
- * 
+ *
  * The filename generated (if $destinataryAsParam is false) will be a random 10 character string, if you want to change
  * this behavior, pass a filename as a Message param called 'file.filename'
- * 
+ *
  */
 class FileAdapter implements \ecoreng\MessageBoy\Adapter
 {
@@ -29,7 +29,7 @@ class FileAdapter implements \ecoreng\MessageBoy\Adapter
 
     /**
      * Constructor
-     * 
+     *
      * @param string $folder - Folder where the messages are going to be stored
      * @param string $fileExtension - File extension (prepend the dot ie: '.txt' or '.log')
      * @param bool $destinataryAsName - Use destinatary as filename?
@@ -65,8 +65,8 @@ class FileAdapter implements \ecoreng\MessageBoy\Adapter
             $nfilename = preg_replace(['#@#', '/\s/', '/\.[\.]+/', '/[^\w_\.\-]/'], ['-at-','_', '.', ''], $filename);
             $status[] = file_put_contents(
                 $this->folder . DIRECTORY_SEPARATOR . $nfilename . $this->fileExtension,
-                date('c') . ' - ' . $msg->getSubject() . ' : ' . $msg->getFrom() .  $to . ' : ' . 
-                    $msg->getBody() . PHP_EOL,
+                date('c') . ' - ' . $msg->getSubject() . ' : ' . $msg->getFrom() .  $to . ' : ' .
+                $msg->getBody() . PHP_EOL,
                 $this->flags
             );
         }
