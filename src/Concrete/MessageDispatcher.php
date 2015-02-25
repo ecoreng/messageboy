@@ -11,7 +11,7 @@ class MessageDispatcher implements IMessageDispatcher
 
     /**
      * All the registered adapters
-     * 
+     *
      * @var \ArrayIterator
      */
     protected $adapters;
@@ -19,7 +19,7 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Reference to which adapter handles which type of request;
      * Contains an array with keys that reference the $adapters iterator entry
-     * 
+     *
      * @var array
      */
     protected $types = [];
@@ -27,7 +27,7 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Reference to which adapter handles which group request;
      * Contains an array with keys that reference the $adapters iterator entry
-     * 
+     *
      * @var array
      */
     protected $groups = [];
@@ -41,10 +41,10 @@ class MessageDispatcher implements IMessageDispatcher
     }
 
     /**
-     * Dispatch the message to the specified handlers registered for $type or 
+     * Dispatch the message to the specified handlers registered for $type or
      * $group, if both variables are null, then it will dispatch the message
      * globally
-     * 
+     *
      * @param Message $message
      * @param string $type
      * @param string $group
@@ -68,7 +68,7 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Register $adapter to handle the messages of type $type or group $group,
      * if these variables are null, the adapter will handle only global messages
-     *  
+     *
      * @param Adapter $adapter
      * @param string $type
      * @param string $group
@@ -87,7 +87,7 @@ class MessageDispatcher implements IMessageDispatcher
 
     /**
      * Returns an \ArrayIterator containing all adapters
-     * 
+     *
      * @return \ArrayIterator
      */
     public function getAdapters()
@@ -98,7 +98,7 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Returns an \ArrayIterator containing all adapters registered to handle
      * a $type request
-     * 
+     *
      * @param string $type
      * @return \ArrayIterator
      */
@@ -110,7 +110,7 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Returns an \ArrayIterator containing all adapters registered to handle
      * a $group request
-     *  
+     *
      * @param string $group
      * @return \ArrayIterator
      */
@@ -160,5 +160,4 @@ class MessageDispatcher implements IMessageDispatcher
             }
         }
     }
-
 }

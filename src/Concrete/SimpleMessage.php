@@ -10,7 +10,7 @@ class SimpleMessage extends Message
     /**
      * Creates a Stream object out of the $body string and sets it as the body
      * of the message
-     * 
+     *
      * @param string $body
      * @return \ecoreng\MessageBoy\Concrete\SimpleMessage
      */
@@ -25,7 +25,7 @@ class SimpleMessage extends Message
     /**
      * Creates an \ArrayIterator out of the $to array and sets it as the
      * destinatary of the message
-     * 
+     *
      * @param array $to
      * @return \ecoreng\MessageBoy\Concrete\SimpleMessage
      */

@@ -97,14 +97,14 @@ class HttpPostAdapter implements \ecoreng\MessageBoy\Adapter
         $curl = curl_init();
 
         curl_setopt_array(
-                $curl,
-                $additionalOptions + [
+            $curl,
+            $additionalOptions + [
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_URL => $this->url,
             CURLOPT_USERAGENT => $this->userAgent,
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => $additionalFields + $fields,
-                ]
+            ]
         );
 
         $resp = curl_exec($curl);
