@@ -8,7 +8,7 @@ use \PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * AMPQ Producer Adapter
- * 
+ *
  * http://www.rabbitmq.com/tutorials/amqp-concepts.html
  */
 class AMPQAdapter implements \ecoreng\MessageBoy\Adapter
