@@ -83,7 +83,7 @@ class MessageDispatcher implements IMessageDispatcher
     public function registerAdapter(Adapter $adapter, $type = null, $group = null)
     {
         $this->adapters->append($adapter);
-        if (!$type || !$group) {
+        if ($type || $group) {
             $key = count($this->adapters) - 1;
             $this->addToType($type, $key);
             $this->addToGroup($group, $key);
