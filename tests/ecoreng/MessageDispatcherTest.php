@@ -68,8 +68,13 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
         $this->md->registerAdapter($mockAdapterGroup, null, 'bar');
         $this->md->registerAdapter($mockAdapterType, 'foo');
 
-        $this->md->dispatch($mockMessage);
-        $this->md->dispatch($mockMessage, 'foo');
-        $this->md->dispatch($mockMessage, null, 'bar');
+        $dis = [];
+        $disEq =[2, 1, 1];
+        $dis[] = $this->md->dispatch($mockMessage);
+        $dis[] = $this->md->dispatch($mockMessage, 'foo');
+        $dis[] = $this->md->dispatch($mockMessage, null, 'bar');
+        foreach ($dis as $key => $result) {
+            $this->assertEquals($disEq[$key], $result);
+        }
     }
 }

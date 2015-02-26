@@ -43,17 +43,21 @@ class MessageDispatcher implements IMessageDispatcher
     /**
      * Dispatch the message to the specified handlers registered for $type or
      * $group, if both variables are null, then it will dispatch the message
-     * globally
+     * globally. Returns the number of handlers that should have processed
+     * the message.
      *
      * @param Message $message
      * @param string $type
      * @param string $group
+     * @return int
      */
     public function dispatch(IMessage $message, $type = null, $group = null)
     {
+        $dispatched = 0;
         if (!$type && !$group) {
             foreach ($this->adapters as $adapter) {
                 $adapter->handle($message);
+                $dispatched++;
             }
         } else {
             $merged = new \AppendIterator;
@@ -61,8 +65,10 @@ class MessageDispatcher implements IMessageDispatcher
             $merged->append($this->getAdaptersByGroup($group));
             foreach ($merged as $adapter) {
                 $adapter->handle($message);
+                $dispatched++;
             }
         }
+        return $dispatched;
     }
 
     /**
