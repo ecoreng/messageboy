@@ -28,7 +28,7 @@ class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
      * @param array $headers - Headers to be used with the mail function
      * @param string $lineSeparator - Line separator for the message
      */
-    public function __construct(array $headers = [], $lineSeparator = '\r\n')
+    public function __construct(array $headers = [], $lineSeparator = "\r\n")
     {
         $this->headers = $headers;
         $this->lineSeparator = $lineSeparator;
