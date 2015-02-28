@@ -20,7 +20,7 @@ use \ecoreng\MessageBoy\Message;
 class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
 {
     protected $headers = [];
-    protected $lineSeparator = '';
+    protected $lineSeparator = "\r\n";
 
     /**
      * Constructor
@@ -52,7 +52,6 @@ class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
 
         $from = $message->getFrom();
         $headers['From'] = $from ? $from : null;
-
         return mail($to, $subject, $msg, $this->generateHeaders($headers));
     }
 
@@ -60,7 +59,7 @@ class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
     {
         $headerString = '';
         foreach ($headers as $header => $value) {
-            $headerString .= $header . ': ' . $value . $this->lineSeparator . PHP_EOL;
+            $headerString .= $header . ': ' . $value . $this->lineSeparator;
         }
         return $headerString;
     }
