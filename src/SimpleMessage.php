@@ -1,8 +1,8 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete;
+namespace MessageBoy;
 
-use \ecoreng\MessageBoy\Concrete\Stream;
+use \MessageBoy\Message;
 
 class SimpleMessage extends Message
 {

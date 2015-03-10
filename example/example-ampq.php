@@ -1,10 +1,10 @@
 <?php
 include('../vendor/autoload.php');
 
-use \ecoreng\MessageBoy\Concrete\MessageDispatcher;
-use \ecoreng\MessageBoy\Concrete\SimpleMessage;
-use \ecoreng\MessageBoy\Concrete\Adapters\AMPQAdapter;
-use \PhpAmqpLib\Connection\AMQPConnection as Connection;
+use MessageBoy\MessageDispatcher;
+use MessageBoy\SimpleMessage;
+use MessageBoy\Adapters\AMPQAdapter;
+use PhpAmqpLib\Connection\AMQPConnection as Connection;
 
 $md = new MessageDispatcher;
 

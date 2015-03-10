@@ -1,8 +1,9 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
-use \ecoreng\MessageBoy\Message;
+use \MessageBoy\Interfaces\MessageInterface;
+use \MessageBoy\Interfaces\AdapterInterface;
 
 /**
  * Send the message information as an HTTP POST request using Curl
@@ -16,7 +17,7 @@ use \ecoreng\MessageBoy\Message;
  * Additional POST Fields can be passed as the Message param:
  * httppost.additional-fields
  */
-class HttpPostAdapter implements \ecoreng\MessageBoy\Adapter
+class HttpPostAdapter implements AdapterInterface
 {
 
     /**
@@ -64,7 +65,7 @@ class HttpPostAdapter implements \ecoreng\MessageBoy\Adapter
         $this->url = $url;
     }
 
-    public function handle(Message $message)
+    public function handle(MessageInterface $message)
     {
         $fields = [];
 

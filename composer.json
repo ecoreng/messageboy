@@ -9,12 +9,11 @@
         }
     ],
     "require": {
-        "psr/http-message": "^0.9",
         "videlalvaro/php-amqplib": "v2.1.0"
     },
     "autoload": {
         "psr-4": {
-            "ecoreng\\MessageBoy\\" : "src/"
+            "MessageBoy\\" : "src/"
         }
     }
 }

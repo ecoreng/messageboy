@@ -1,8 +1,9 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
-use \ecoreng\MessageBoy\Message;
+use \MessageBoy\Interfaces\MessageInterface;
+use \MessageBoy\Interfaces\AdapterInterface;
 
 /**
  * Sends an email using the native mail function
@@ -17,7 +18,7 @@ use \ecoreng\MessageBoy\Message;
  * Supports multiple destinataries as the mail function handles it properly in
  * one call.
  */
-class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
+class NativeMailAdapter implements AdapterInterface
 {
     protected $headers = [];
     protected $lineSeparator = "\r\n";
@@ -34,7 +35,7 @@ class NativeMailAdapter implements \ecoreng\MessageBoy\Adapter
         $this->lineSeparator = $lineSeparator;
     }
 
-    public function handle(Message $message)
+    public function handle(MessageInterface $message)
     {
         $headers = $this->headers;
 

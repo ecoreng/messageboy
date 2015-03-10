@@ -19,10 +19,10 @@ The library operates the following way:
 
 // ==== Boilerplate code ====
 
-use ecoreng\MessageBoy\Concrete\MessageDispatcher;
-use ecoreng\MessageBoy\Concrete\SimpleMessage;
-use ecoreng\MessageBoy\Concrete\Adapters\NativeMailAdapter as Mail;
-use ecoreng\MessageBoy\Concrete\Adapters\ClosureAdapter;
+use MessageBoy\MessageDispatcher;
+use MessageBoy\SimpleMessage;
+use MessageBoy\Adapters\NativeMailAdapter as Mail;
+use MessageBoy\Adapters\ClosureAdapter;
 
 $md = new MessageDispatcher;
 
@@ -86,7 +86,7 @@ $md->dispatch($message, 'priority');
 
 Notice that we are now using the class ``Message`` instead of ``SimpleMessage``, which allows us to pass a ``Stream`` object as the body of the message, and an ``Iterator`` for the destinataries of that message, so it's really flexible if it's needed.
 
-The adapters registered in this last example are virtual as I am not providing them, but it's not rocket science, just create a class the implements ``ecoreng\MessageBoy\Adapter``, register it in the dispatcher and you will receive an implementation of ``ecoreng\MessageBoy\Message`` ready to be used.
+The adapters registered in this last example are virtual as I am not providing them, but it's not rocket science, just create a class the implements ``MessageBoy\Interfaces\AdapterInterface``, register it in the dispatcher and you will receive an implementation of ``ecoreng\MessageBoy\Message`` ready to be used.
 
 Alternative:
 

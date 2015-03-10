@@ -8,12 +8,12 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->md = new \ecoreng\MessageBoy\Concrete\MessageDispatcher;
+        $this->md = new \MessageBoy\MessageDispatcher;
     }
 
     public function testAddAdapter()
     {
-        $mockAdapter = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->getMock();
+        $mockAdapter = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')->getMock();
         $this->md->registerAdapter($mockAdapter);
         $this->md->registerAdapter($mockAdapter);
         $this->assertEquals(2, count($this->md->getAdapters()));
@@ -24,7 +24,7 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testAddAdapterToType()
     {
-        $mockAdapter = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->getMock();
+        $mockAdapter = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')->getMock();
         $this->md->registerAdapter($mockAdapter, 'test');
         $this->md->registerAdapter($mockAdapter, 'test');
         $this->assertEquals(2, count($this->md->getAdaptersByType('test')));
@@ -35,7 +35,7 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testAddAdapterToGroup()
     {
-        $mockAdapter = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->getMock();
+        $mockAdapter = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')->getMock();
         $this->md->registerAdapter($mockAdapter, null, 'test');
         $this->md->registerAdapter($mockAdapter, null, 'test');
         $this->assertEquals(2, count($this->md->getAdaptersByGroup('test')));
@@ -46,7 +46,7 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testAddAdapterToBoth()
     {
-        $mockAdapter = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')->getMock();
+        $mockAdapter = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')->getMock();
         $this->md->registerAdapter($mockAdapter, 'foo', 'moo');
         $this->md->registerAdapter($mockAdapter, 'foo', 'bar');
         $this->assertEquals(2, count($this->md->getAdaptersByType('foo')));
@@ -58,14 +58,14 @@ class MessageDispatcherTest extends \PHPUnit_Framework_TestCase
 
     public function testDispatchMessage()
     {
-        $mockAdapterType  = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')
+        $mockAdapterType  = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')
             ->setMockClassName('TypeAdapter')
             ->getMock();
-        $mockAdapterGroup = $this->getMockBuilder('ecoreng\MessageBoy\Adapter')
+        $mockAdapterGroup = $this->getMockBuilder('MessageBoy\Interfaces\AdapterInterface')
             ->setMockClassName('GroupAdapter')
             ->getMock();
 
-        $mockMessage = $this->getMockBuilder('ecoreng\MessageBoy\Message')->getMock();
+        $mockMessage = $this->getMockBuilder('MessageBoy\Interfaces\MessageInterface')->getMock();
 
         $mockAdapterType
             ->expects($this->exactly(2))

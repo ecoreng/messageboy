@@ -1,6 +1,6 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
 function mail($to, $subject, $msg, $headers)
 {
@@ -13,8 +13,8 @@ class NativeMailAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\NativeMailAdapter;
-        $this->ms = new \ecoreng\MessageBoy\Concrete\SimpleMessage;
+        $this->ad = new \MessageBoy\Adapters\NativeMailAdapter;
+        $this->ms = new \MessageBoy\SimpleMessage;
     }
 
     public function testHandle()

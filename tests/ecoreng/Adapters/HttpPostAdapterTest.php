@@ -1,6 +1,6 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
 function curl_init()
 {
@@ -35,8 +35,8 @@ class HttpPostAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\HttpPostAdapter('http://example.com');
-        $this->ms = new \ecoreng\MessageBoy\Concrete\SimpleMessage;
+        $this->ad = new \MessageBoy\Adapters\HttpPostAdapter('http://example.com');
+        $this->ms = new \MessageBoy\SimpleMessage;
     }
 
     public function testHandle()
@@ -64,7 +64,7 @@ class HttpPostAdapterTest extends \PHPUnit_Framework_TestCase
 
     public function testHandleNotDefault()
     {
-        $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\HttpPostAdapter(
+        $this->ad = new \MessageBoy\Adapters\HttpPostAdapter(
             'http://example2.com',
             ['body' => 'mensaje', 'subject' => 'titulo', 'to' => 'para', 'from' => 'de'],
             'superbot'

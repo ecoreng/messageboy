@@ -8,14 +8,14 @@ class SimpleMessageTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ms = new \ecoreng\MessageBoy\Concrete\SimpleMessage;
+        $this->ms = new \MessageBoy\SimpleMessage;
     }
 
     public function testBodyString()
     {
         $this->ms->setBodyString('foo');
         $body = $this->ms->getBody();
-        $this->assertInstanceOf('\ecoreng\MessageBoy\Concrete\Stream', $body);
+        $this->assertInstanceOf('MessageBoy\Stream', $body);
         $this->assertEquals('foo', (string) $body);
     }
 

@@ -1,8 +1,10 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
-use \ecoreng\MessageBoy\Message;
+use \MessageBoy\Interfaces\MessageInterface;
+use \MessageBoy\Interfaces\AdapterInterface;
+
 use \PhpAmqpLib\Connection\AMQPConnection as Connection;
 use \PhpAmqpLib\Message\AMQPMessage;
 
@@ -11,7 +13,7 @@ use \PhpAmqpLib\Message\AMQPMessage;
  *
  * http://www.rabbitmq.com/tutorials/amqp-concepts.html
  */
-class AMPQAdapter implements \ecoreng\MessageBoy\Adapter
+class AMPQAdapter implements AdapterInterface
 {
     protected $connection;
     protected $channel;
@@ -31,7 +33,7 @@ class AMPQAdapter implements \ecoreng\MessageBoy\Adapter
         $this->createQueues = $createQueues;
     }
 
-    public function handle(Message $message)
+    public function handle(MessageInterface $message)
     {
         $params = $message->getParams();
 
@@ -48,7 +50,8 @@ class AMPQAdapter implements \ecoreng\MessageBoy\Adapter
 
         // subject equals routing key
         // params equals headers
-        // destinataries equal queues ?
+        // destinataries equal queues
+
         // exchanges in RabbitAMPQ
         // (default) -> automatic direct routing (key = queue name)
         // amq.direct -> routing key is used to pick a queue

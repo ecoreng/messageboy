@@ -24,13 +24,13 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace ecoreng\MessageBoy\Concrete;
+namespace MessageBoy;
 
-use InvalidArgumentException;
-use Psr\Http\Message\StreamableInterface;
+use \InvalidArgumentException;
+use \MessageBoy\Interfaces\StreamableInterface;
 
 /**
- * Implementation of PSR HTTP streams
+ * Implementation of streams
  *
  * This code is extracted from:
  * https://github.com/phly/http/blob/master/src/Stream.php

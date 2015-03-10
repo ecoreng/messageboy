@@ -1,6 +1,6 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
 function file_put_contents($file, $data, $flags)
 {
@@ -11,12 +11,14 @@ class FileAdapterTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $ad;
+    protected $ms;
+    protected $add;
 
     public function setUp()
     {
-        $this->add = new \ecoreng\MessageBoy\Concrete\Adapters\FileAdapter('test', '.tst', true, \FILE_APPEND);
-        $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\FileAdapter;
-        $this->ms = new \ecoreng\MessageBoy\Concrete\SimpleMessage;
+        $this->add = new \MessageBoy\Adapters\FileAdapter('test', '.tst', true, \FILE_APPEND);
+        $this->ad = new \MessageBoy\Adapters\FileAdapter;
+        $this->ms = new \MessageBoy\SimpleMessage;
     }
 
     public function testHandleDefault()

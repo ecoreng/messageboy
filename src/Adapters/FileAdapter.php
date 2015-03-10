@@ -1,8 +1,9 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
-use \ecoreng\MessageBoy\Message;
+use \MessageBoy\Interfaces\MessageInterface;
+use \MessageBoy\Interfaces\AdapterInterface;
 
 /**
  * Adapter that sends the messages to a file
@@ -20,7 +21,7 @@ use \ecoreng\MessageBoy\Message;
  * this behavior, pass a filename as a Message param called 'file.filename'
  *
  */
-class FileAdapter implements \ecoreng\MessageBoy\Adapter
+class FileAdapter implements AdapterInterface
 {
     protected $folder;
     protected $fileExtension;
@@ -43,7 +44,7 @@ class FileAdapter implements \ecoreng\MessageBoy\Adapter
         $this->flags = $flags;
     }
 
-    public function handle(Message $message)
+    public function handle(MessageInterface $message)
     {
         $msg = $message;
         $filenames = [];

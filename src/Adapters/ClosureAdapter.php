@@ -1,15 +1,16 @@
 <?php
 
-namespace ecoreng\MessageBoy\Concrete\Adapters;
+namespace MessageBoy\Adapters;
 
-use \ecoreng\MessageBoy\Message;
+use \MessageBoy\Interfaces\MessageInterface;
+use \MessageBoy\Interfaces\AdapterInterface;
 
 /**
  * Adapter that accepts a 'Closure'/anonymous function as argument in the
  * consturctor and executes that 'Closure' upon calling the 'handle' method
  * passing the 'Message' to it.
  */
-class ClosureAdapter implements \ecoreng\MessageBoy\Adapter
+class ClosureAdapter implements AdapterInterface
 {
     protected $handler;
 
@@ -23,7 +24,7 @@ class ClosureAdapter implements \ecoreng\MessageBoy\Adapter
         $this->handler = $handler;
     }
 
-    public function handle(Message $message)
+    public function handle(MessageInterface $message)
     {
         $handler = $this->handler;
         return $handler($message);

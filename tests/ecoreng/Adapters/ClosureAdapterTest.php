@@ -2,7 +2,7 @@
 
 namespace ecoreng\Test;
 
-class NativeMailAdapterTest extends \PHPUnit_Framework_TestCase
+class ClosureAdapterTest extends \PHPUnit_Framework_TestCase
 {
     protected $ad;
 
@@ -11,8 +11,8 @@ class NativeMailAdapterTest extends \PHPUnit_Framework_TestCase
         $cls = function ($message) {
             return 'successful';
         };
-        $this->ad = new \ecoreng\MessageBoy\Concrete\Adapters\ClosureAdapter($cls);
-        $this->ms = new \ecoreng\MessageBoy\Concrete\SimpleMessage;
+        $this->ad = new \MessageBoy\Adapters\ClosureAdapter($cls);
+        $this->ms = new \MessageBoy\SimpleMessage;
     }
 
     public function testHandle()

@@ -8,12 +8,12 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->ms = new \ecoreng\MessageBoy\Concrete\Message;
+        $this->ms = new \MessageBoy\Message;
     }
 
     public function testBody()
     {
-        $mockStream = $this->getMockBuilder('\ecoreng\MessageBoy\Concrete\Stream')
+        $mockStream = $this->getMockBuilder('MessageBoy\Stream')
             ->disableOriginalConstructor()
             ->getMock();
         $this->ms->setBody($mockStream);
