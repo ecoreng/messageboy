@@ -4,7 +4,7 @@ namespace MessageBoy\Interfaces;
 
 /**
  * ORIGINALLY FROM psr/http-message StreamableInterface
- * 
+ *
  * Describes streamable message body content.
  *
  * Typically, an instance will wrap a PHP stream; this interface provides
